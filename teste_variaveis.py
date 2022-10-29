@@ -9,7 +9,7 @@ path_brasil = "dados_brasil.csv"
 # - TOPO E RODAPÉ ------------------------------------------------------------------------
 html_title="""
 <h1 style="font-size:300%; color:#4169e1; font-family:sans-serif;
-            text-align:center; ">Minitor Interativo de Dados Online: Instagram</h1>
+            text-align:center; ">Instagram Monitor Interativo</h1>
 """
 html_rodape="""
 <hr style= "display: block;
