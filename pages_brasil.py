@@ -5,8 +5,6 @@ from teste_variaveis import *
 from plots_brasil import *
 import streamlit as st
 
-config = {'displayModeBar': False}
-
 ## - Topo e Rodapé da Aplicação:
 def topo():
     st.markdown(html_title, unsafe_allow_html=True) #Explorador de Dados Abertos
@@ -19,7 +17,11 @@ def rodape():
     st.markdown(html_rodape, unsafe_allow_html=True) # ---- by: mateus
     return None
 
-
+config={"displayModeBar": True,
+        "displaylogo": False,
+        'modeBarButtonsToRemove': ['zoom2d', 'toggleSpikelines',
+                                   'pan2d', 'select2d', 'lasso2d', 'zoomIn2d', 'zoomOut2d', 'autoScale2d',
+                                   'hoverClosestCartesian', 'hoverCompareCartesian']}
 
 def brasil1():
     col1A, col2A, col3A, col4A, col5A = st.columns([50, 520, 60, 520, 50])
