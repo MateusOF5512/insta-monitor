@@ -3,7 +3,8 @@ import plotly.graph_objects as go
 import streamlit as st
 import numpy as np
 from plotly.subplots import make_subplots
-import plotly.express as px
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
 
 from teste_variaveis import *
 
@@ -337,7 +338,14 @@ figC2.update_layout(autosize=True,
 
 
 
-
+### --------------------------------------
+figD1 = plt.subplots()
+wordcloud = WordCloud(height=384, background_color='#F9F9FA',
+                      min_font_size=8, scale=2.5,
+                      regexp=r"[a-zA-z#&]+", max_words=30, min_word_length=4
+                      ).generate(' '.join(df['text']))
+plt.imshow(wordcloud) # image show
+plt.axis('off') # to off the axis of x and y
 
 
 

@@ -73,6 +73,20 @@ def brasil1():
 
     st.write("")
 
+    col1A, col2A, col3A, col4A, col5A = st.columns([50, 520, 60, 520, 50])
+    with col1A:
+        st.text("")
+    with col2A:
+        st.markdown(html_card_header_CA, unsafe_allow_html=True)  # Descrição Inicial
+        st.dataframe(df)  # GRÁFICO DE BARRA HORIZONTAL
+    with col3A:
+        st.text("")
+    with col4A:
+        st.markdown(html_card_header_CC, unsafe_allow_html=True)  # Descrição Inicial
+        st.pyplot(figD1)  # GRÁFICO DE BARRA HORIZONTAL
+    with col5A:
+        st.text("")
+
     st.markdown("""---""")
     st.write("")
     return None
