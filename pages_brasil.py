@@ -5,6 +5,7 @@ from teste_variaveis import *
 from plots_brasil import *
 import streamlit as st
 
+config = {'displayModeBar': False}
 
 ## - Topo e Rodapé da Aplicação:
 def topo():
@@ -19,20 +20,21 @@ def rodape():
     return None
 
 
+
 def brasil1():
     col1A, col2A, col3A, col4A, col5A = st.columns([50, 520, 60, 520, 50])
     with col1A:
         st.text("")
     with col2A:
         st.markdown(html_card_header_AA1, unsafe_allow_html=True)  # Descrição Inicial
-        st.plotly_chart(figA1, use_container_width=True)  # GRÁFICO DE BARRA HORIZONTAL
-        st.plotly_chart(figA2, use_container_width=True)  # GRÁFICO DE BARRA HORIZONTAL
-        st.plotly_chart(figA3, use_container_width=True)  # GRÁFICO DE BARRA HORIZONTAL
+        st.plotly_chart(figA1, use_container_width=True, config=config)  # GRÁFICO DE BARRA HORIZONTAL
+        st.plotly_chart(figA2, use_container_width=True, config=config)  # GRÁFICO DE BARRA HORIZONTAL
+        st.plotly_chart(figA3, use_container_width=True, config=config)  # GRÁFICO DE BARRA HORIZONTAL
     with col3A:
         st.text("")
     with col4A:
         st.markdown(html_card_header_ABB, unsafe_allow_html=True)  # Links importantes
-        st.plotly_chart(figA4, use_container_width=True)  # GRÁFICO DE BARRA HORIZONTAL
+        st.plotly_chart(figA4, use_container_width=True, config=config)  # GRÁFICO DE BARRA HORIZONTAL
     with col5A:
         st.text("")
 
@@ -42,12 +44,12 @@ def brasil1():
         st.text("")
     with col2A:
         st.markdown(html_card_header_BA, unsafe_allow_html=True)  # Descrição Inicial
-        st.plotly_chart(figB1, use_container_width=True)  # GRÁFICO DE BARRA HORIZONTAL
+        st.plotly_chart(figB1, use_container_width=True, config=config) # GRÁFICO DE BARRA HORIZONTAL
     with col3A:
         st.text("")
     with col4A:
         st.markdown(html_card_header_BB, unsafe_allow_html=True)  # Links importantes
-        st.plotly_chart(figB2, use_container_width=True)  # GRÁFICO DE BARRA HORIZONTAL
+        st.plotly_chart(figB2, use_container_width=True, config=config)  # GRÁFICO DE BARRA HORIZONTAL
     with col5A:
         st.text("")
 
@@ -58,12 +60,12 @@ def brasil1():
         st.text("")
     with col2A:
         st.markdown(html_card_header_CC, unsafe_allow_html=True)  # Descrição Inicial
-        st.plotly_chart(figC1, use_container_width=True)  # GRÁFICO DE BARRA HORIZONTAL
+        st.plotly_chart(figC1, use_container_width=True, config=config)  # GRÁFICO DE BARRA HORIZONTAL
     with col3A:
         st.text("")
     with col4A:
         st.markdown(html_card_header_CA, unsafe_allow_html=True)  # Descrição Inicial
-        st.plotly_chart(figC2, use_container_width=True)  # GRÁFICO DE BARRA HORIZONTAL
+        st.plotly_chart(figC2, use_container_width=True, config=config)  # GRÁFICO DE BARRA HORIZONTAL
     with col5A:
         st.text("")
 
