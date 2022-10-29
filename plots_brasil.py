@@ -313,7 +313,7 @@ figC1 = go.Figure(data=go.Heatmap(
                    y=['Madrugada', 'Noite', 'Tarde', 'Manhã'],
                    hovertemplate="</br><b>Dia:</b> %{x}"+
                                  "</br><b>Turno:</b> %{y}"+
-                                 "</br><b>Interações:</b> %{z}",
+                                 "</br><b>Publicações:</b> %{z}",
                    colorscale='Portland'))
 figC1.update_layout(autosize=True,
                    height=200, margin=dict(l=1, r=10, b=10, t=15),
@@ -327,7 +327,7 @@ figC2 = go.Figure(data=go.Heatmap(
                    y=['Madrugada', 'Noite', 'Tarde', 'Manhã'],
                    hovertemplate="</br><b>Dia:</b> %{x}"+
                                  "</br><b>Turno:</b> %{y}"+
-                                 "</br><b>Publicações:</b> %{z}",
+                                 "</br><b>Interações:</b> %{z}",
                    colorscale='Portland'))
 figC2.update_layout(autosize=True,
                    height=200, margin=dict(l=1, r=10, b=10, t=15),
