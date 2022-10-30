@@ -3,8 +3,8 @@ import plotly.graph_objects as go
 import streamlit as st
 import numpy as np
 from plotly.subplots import make_subplots
-import matplotlib.pyplot as plt
-from wordcloud import WordCloud
+
+
 
 from teste_variaveis import *
 
@@ -14,29 +14,8 @@ def get_data( path_brasil ):
     df = pd.read_csv( path_brasil )
     return df
 
-def tratamento_dados(df):
-    df['likes']=np.where(df['likes'] == -1, 1, 0) #Convertendo likes -1 para zero
-    df['count']=np.where(df['likes'] == 2, 0, 1)
-    df = df.astype({"count": np.dtype("int64")})
-    df = df.astype({"likes": np.dtype("int64")})
-    df['type'].replace('GraphSidecar', 'Coleção de Imagens', inplace = True) #Convertendo nome dos tipo de publicação
-    df['type'].replace('GraphImage', 'Imagem Única', inplace = True) #Convertendo nome dos tipo de publicação
-    df['inter'] = df['likes'] + df['comments']
-    df['dates'] = pd.to_datetime(df['time']).dt.date #Coletando apenas a data da coluna time
-    df['weekday'] = pd.to_datetime(df['time']).apply(lambda x: x.weekday()) #Coletando o Dia da Semana da coluna time
-    df['Hour'] = pd.to_datetime(df['time']).dt.hour #Coletando a hora da publicação
-    conditions = [
-        (df['Hour'] >= 6) & (df['Hour'] <= 12),
-        (df['Hour'] >= 12) & (df['Hour'] <= 18),
-        (df['Hour'] >= 18) & (df['Hour'] <= 24),
-        (df['Hour'] >= 0) & (df['Hour'] <= 6)]
-    values = ['Manhã', 'Tarde', 'Noite', 'Madrugada']
-    df['Turno'] = np.select(conditions, values)
-
-    return df
 
 df = get_data(path_brasil)
-df = tratamento_dados(df)
 
 ### GRAFICO INDICADOR - MÉTRICAS GLOBAIS, LIKES E COMENTÁRIOS
 # DADOS DE ENTRADA:
@@ -165,9 +144,9 @@ df_type = df.groupby('type').agg('sum')
 GraphImage_count = df_type["count"].iloc[1]
 GraphSidecar_count = df_type["count"].iloc[0]
 
-GraphImage_likes = 1
+GraphImage_likes = df_type["likes"].iloc[1]
 GraphImage_comments = df_type["comments"].iloc[1]
-GraphSidecar_likes = 1
+GraphSidecar_likes = df_type["likes"].iloc[0]
 GraphSidecar_comments = df_type["comments"].iloc[0]
 
 labels = ['Imagem Única', "Imagens Coleção"]
@@ -338,14 +317,7 @@ figC2.update_layout(autosize=True,
 
 
 
-### --------------------------------------
-figD1 = plt.subplots()
-wordcloud = WordCloud(height=384, background_color='#F9F9FA',
-                      min_font_size=8, scale=2.5,
-                      regexp=r"[a-zA-z#&]+", max_words=30, min_word_length=4
-                      ).generate(' '.join(df['text']))
-plt.imshow(wordcloud) # image show
-plt.axis('off') # to off the axis of x and y
+### -------------------------------------
 
 
 

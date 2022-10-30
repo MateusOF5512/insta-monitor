@@ -83,7 +83,7 @@ def brasil1():
         st.text("")
     with col4A:
         st.markdown(html_card_header_CC, unsafe_allow_html=True)  # Descrição Inicial
-        st.pyplot(figD1)  # GRÁFICO DE BARRA HORIZONTAL
+        #st.pyplot(figD1)  # GRÁFICO DE BARRA HORIZONTAL
     with col5A:
         st.text("")
 

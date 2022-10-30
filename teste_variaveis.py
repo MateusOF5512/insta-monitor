@@ -3,7 +3,7 @@ from PIL import Image
 # CAMINHO PARA OS DADOS ----------------------------------------------------------------
 
 path = "instagram1.csv"
-path_brasil = "dados_brasil.csv"
+path_brasil = "instagram_tratado_vtrbrasil.csv"
 
 
 # - TOPO E RODAPÉ ------------------------------------------------------------------------
