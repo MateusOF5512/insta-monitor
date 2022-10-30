@@ -288,9 +288,10 @@ matriz_c = [[dom_4, seg_4, ter_4, qua_4, qui_4, sex_4, sab_4],
           [dom_1, seg_1, ter_1, qua_1, qui_1, sex_1, sab_1]]
 
 figC1 = go.Figure(data=go.Heatmap(
-                   z=matriz_c, name="",
+                   z=matriz_c, name="",text=matriz_c,
                    x=['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
                    y=['Madrugada', 'Noite', 'Tarde', 'Manhã'],
+                   texttemplate="%{text}",
                    hovertemplate="</br><b>Dia:</b> %{x}"+
                                  "</br><b>Turno:</b> %{y}"+
                                  "</br><b>Publicações:</b> %{z}",
@@ -302,9 +303,10 @@ figC1.update_layout(autosize=True,
 
 
 figC2 = go.Figure(data=go.Heatmap(
-                   z=matriz_i, name="",
+                   z=matriz_i, name="", text=matriz_i,
                    x=['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
                    y=['Madrugada', 'Noite', 'Tarde', 'Manhã'],
+                   texttemplate="%{text}",
                    hovertemplate="</br><b>Dia:</b> %{x}"+
                                  "</br><b>Turno:</b> %{y}"+
                                  "</br><b>Interações:</b> %{z}",
