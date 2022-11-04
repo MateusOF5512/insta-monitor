@@ -170,7 +170,20 @@ html_card_header_CA="""
     <h5 class="card-title" style="background-color:#4169E1; color:#F5F5F5; font-family:sans-serif;
                                   padding-top: 7px; padding-right: 15px; padding-bottom: 1px; padding-left: 15px; 
                                   text-align: center;font-size: 120%;" 
-                                  >Interações por Turno e Dia da Semana</h5>
+                                  >Tabela com Dados das Publicações</h5>
+  </div>
+</div>
+"""
+html_card_header_1D2="""
+<div class="card">
+  <div class="card-body" style="border-radius: 15px 15px 0px 0px; background: #4169E1;  
+                                border:solid; border-color: black; border-width: 1px 1px 1px 1px;
+                                padding-top: 1px; padding-right: 20px; padding-bottom: 1px; padding-left: 20px; 
+                                width: 100%; height: 40px;">
+    <h5 class="card-title" style="background-color:#4169E1; color:#F5F5F5; font-family:sans-serif;
+                                  padding-top: 7px; padding-right: 15px; padding-bottom: 1px; padding-left: 15px; 
+                                  text-align: center;font-size: 120%;" 
+                                  >Palavras mais frequêntes nas Descrições</h5>
   </div>
 </div>
 """
@@ -212,7 +225,7 @@ html_card_header_2A1="""
     <h5 class="card-title" style="background-color:#4169E1; color:#F5F5F5; font-family:sans-serif;
                                   padding-top: 7px; padding-right: 15px; padding-bottom: 1px; padding-left: 15px; 
                                   text-align: center;font-size: 120%;" 
-                                  >Comentários</h5>
+                                  >Métricas dos Comentários</h5>
   </div>
 </div>
 """
@@ -226,7 +239,7 @@ html_card_header_2A2="""
     <h5 class="card-title" style="background-color:#4169E1; color:#F5F5F5; font-family:sans-serif;
                                   padding-top: 7px; padding-right: 15px; padding-bottom: 1px; padding-left: 15px; 
                                   text-align: center;font-size: 120%;" 
-                                  >Respostas</h5>
+                                  >Métricas das Respostas</h5>
   </div>
 </div>
 """
@@ -240,7 +253,7 @@ html_card_header_2B1="""
     <h5 class="card-title" style="background-color:#4169E1; color:#F5F5F5; font-family:sans-serif;
                                   padding-top: 7px; padding-right: 15px; padding-bottom: 1px; padding-left: 15px; 
                                   text-align: center;font-size: 120%;" 
-                                  >Comentários mais Frequêntes</h5>
+                                  >Palavras mais frequêntes nos Comentários</h5>
   </div>
 </div>
 """
@@ -254,7 +267,90 @@ html_card_header_2B2="""
     <h5 class="card-title" style="background-color:#4169E1; color:#F5F5F5; font-family:sans-serif;
                                   padding-top: 7px; padding-right: 15px; padding-bottom: 1px; padding-left: 15px; 
                                   text-align: center;font-size: 120%;" 
-                                  >Respostas mais Frequêntes</h5>
+                                  >Palavras mais frequêntes nas Respostas</h5>
   </div>
 </div>
 """
+
+html_card_header_2C1="""
+<div class="card">
+  <div class="card-body" style="border-radius: 15px 15px 0px 0px; background: #4169E1;  
+                                border:solid; border-color: black; border-width: 1px 1px 1px 1px;
+                                padding-top: 1px; padding-right: 20px; padding-bottom: 1px; padding-left: 20px; 
+                                width: 100%; height: 40px;">
+    <h5 class="card-title" style="background-color:#4169E1; color:#F5F5F5; font-family:sans-serif;
+                                  padding-top: 7px; padding-right: 15px; padding-bottom: 1px; padding-left: 15px; 
+                                  text-align: center;font-size: 120%;" 
+                                  >Perfis que mais Comentam</h5>
+  </div>
+</div>
+"""
+
+html_card_header_2C2="""
+<div class="card">
+  <div class="card-body" style="border-radius: 15px 15px 0px 0px; background: #4169E1;  
+                                border:solid; border-color: black; border-width: 1px 1px 1px 1px;
+                                padding-top: 1px; padding-right: 20px; padding-bottom: 1px; padding-left: 20px; 
+                                width: 100%; height: 40px;">
+    <h5 class="card-title" style="background-color:#4169E1; color:#F5F5F5; font-family:sans-serif;
+                                  padding-top: 7px; padding-right: 15px; padding-bottom: 1px; padding-left: 15px; 
+                                  text-align: center;font-size: 120%;" 
+                                  >Perfis que mais Respondem</h5>
+  </div>
+</div>
+"""
+
+html_card_header_2D1="""
+<div class="card">
+  <div class="card-body" style="border-radius: 15px 15px 0px 0px; background: #4169E1;  
+                                border:solid; border-color: black; border-width: 1px 1px 1px 1px;
+                                padding-top: 1px; padding-right: 20px; padding-bottom: 1px; padding-left: 20px; 
+                                width: 100%; height: 40px;">
+    <h5 class="card-title" style="background-color:#4169E1; color:#F5F5F5; font-family:sans-serif;
+                                  padding-top: 7px; padding-right: 15px; padding-bottom: 1px; padding-left: 15px; 
+                                  text-align: center;font-size: 120%;" 
+                                  >Comentários e Respostas por Publicação</h5>
+  </div>
+</div>
+"""
+
+html_card_header_2D2="""
+<div class="card">
+  <div class="card-body" style="border-radius: 15px 15px 0px 0px; background: #4169E1;  
+                                border:solid; border-color: black; border-width: 1px 1px 1px 1px;
+                                padding-top: 1px; padding-right: 20px; padding-bottom: 1px; padding-left: 20px; 
+                                width: 100%; height: 40px;">
+    <h5 class="card-title" style="background-color:#4169E1; color:#F5F5F5; font-family:sans-serif;
+                                  padding-top: 7px; padding-right: 15px; padding-bottom: 1px; padding-left: 15px; 
+                                  text-align: center;font-size: 120%;" 
+                                  >Comentários com e sem Respostas</h5>
+  </div>
+</div>
+"""
+
+html_card_header_2E1="""
+<div class="card">
+  <div class="card-body" style="border-radius: 15px 15px 0px 0px; background: #4169E1;  
+                                border:solid; border-color: black; border-width: 1px 1px 1px 1px;
+                                padding-top: 1px; padding-right: 20px; padding-bottom: 1px; padding-left: 20px; 
+                                width: 100%; height: 40px;">
+    <h5 class="card-title" style="background-color:#4169E1; color:#F5F5F5; font-family:sans-serif;
+                                  padding-top: 7px; padding-right: 15px; padding-bottom: 1px; padding-left: 15px; 
+                                  text-align: center;font-size: 120%;" 
+                                  >Tabela com Todos Cometários e Respostas</h5>
+  </div>
+</div>
+"""
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -86,7 +86,7 @@ def brasil1():
     with col3A:
         st.text("")
     with col4A:
-        st.markdown(html_card_header_2B2, unsafe_allow_html=True)  # Descrição Inicial
+        st.markdown(html_card_header_1D2, unsafe_allow_html=True)  # Descrição Inicial
         st.pyplot(figC3)  # GRÁFICO DE BARRA HORIZONTAL
     with col5A:
         st.text("")
@@ -135,12 +135,12 @@ def comentarios():
     with col1A:
         st.text("")
     with col2A:
-        st.markdown(html_card_header_CC, unsafe_allow_html=True)  # Descrição Inicial
+        st.markdown(html_card_header_2C1, unsafe_allow_html=True)  # Descrição Inicial
         st.plotly_chart(figF1, use_container_width=True, config=config)  # GRÁFICO DE BARRA HORIZONTAL
     with col3A:
         st.text("")
     with col4A:
-        st.markdown(html_card_header_CA, unsafe_allow_html=True)  # Descrição Inicial
+        st.markdown(html_card_header_2C2, unsafe_allow_html=True)  # Descrição Inicial
         st.plotly_chart(figF2, use_container_width=True, config=config)  # GRÁFICO DE BARRA HORIZONTAL
     with col5A:
         st.text("")
@@ -149,28 +149,23 @@ def comentarios():
     with col1A:
         st.text("")
     with col2A:
-        st.markdown(html_card_header_BA, unsafe_allow_html=True)  # Descrição Inicial
+        st.markdown(html_card_header_2D1, unsafe_allow_html=True)  # Descrição Inicial
         st.plotly_chart(figE1, use_container_width=True, config=config)  # GRÁFICO DE BARRA HORIZONTAL
     with col3A:
         st.text("")
     with col4A:
-        st.markdown(html_card_header_BB, unsafe_allow_html=True)  # Links importantes
-        st.plotly_chart(figE2, use_container_width=True, config=config)  # GRÁFICO DE BARRA HORIZONTAL
+        st.markdown(html_card_header_2D2, unsafe_allow_html=True)  # Links importantes
+        st.plotly_chart(figD3, use_container_width=True, config=config)  # GRÁFICO DE BARRA HORIZONTAL
     with col5A:
         st.text("")
 
-    col1A, col2A, col3A, col4A, col5A = st.columns([50, 520, 60, 520, 50])
+    col1A, col2A, col3A = st.columns([50, 1100, 50])
     with col1A:
         st.text("")
     with col2A:
-        st.markdown(html_card_header_AA1, unsafe_allow_html=True)  # Descrição Inicial
-        st.dataframe(df_com, height=250)
+        st.markdown(html_card_header_2E1, unsafe_allow_html=True)  # Descrição Inicial
+        st.dataframe(df_com, height=350)
     with col3A:
-        st.text("")
-    with col4A:
-        st.markdown(html_card_header_ABB, unsafe_allow_html=True)  # Links importantes
-        st.plotly_chart(figD3, use_container_width=True, config=config)  # GRÁFICO DE BARRA HORIZONTAL
-    with col5A:
         st.text("")
 
     st.write("")

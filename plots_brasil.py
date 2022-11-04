@@ -5,6 +5,7 @@ import numpy as np
 from plotly.subplots import make_subplots
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
+from PIL import Image
 
 
 from teste_variaveis import *
@@ -171,6 +172,9 @@ figA3.update_layout(title="Comentários",title_font_color='black',title_font_siz
 
 
 ### GRAFICO 2 - PIZZA -
+im1 = Image.open("publicacao.jpeg")
+im2 = Image.open("like.png")
+im3 = Image.open("comentario.png")
 
 df_type = df.groupby('type').agg('sum')
 GraphImage_count = df_type["count"].iloc[1]
@@ -184,33 +188,41 @@ GraphSidecar_comments = df_type["comments"].iloc[0]
 labels = ['Imagem Única', "Imagens Coleção"]
 colors = ['#8A2BE2', '#483D8B']
 figA4 = make_subplots(rows=1, cols=3, specs=[[{'type':'domain'}, {'type':'domain'}, {'type':'domain'}]],
-                       subplot_titles=['Publicações:', 'Likes:', 'Comentários:'])
+                      subplot_titles=['Publicações', 'Likes', 'Comentários', ])
 
 figA4.add_trace(go.Pie(labels=labels, name="Publicações",
                        values=[GraphImage_count, GraphSidecar_count],
                        textinfo='none', showlegend=True,
-                       marker=dict(colors=colors, line=dict(color='#000010', width=2))), 1, 1)
+                       domain={'y': [0, 1], 'x': [0, 0.3]},
+                       marker=dict(colors=colors, line=dict(color='#000010', width=2))))
 
 figA4.add_trace(go.Pie(labels=labels, name="Likes",
                        values=[GraphImage_likes, GraphSidecar_likes],
                        textinfo='none', showlegend=True,
-                       marker=dict(colors=colors, line=dict(color='#000010', width=2))), 1, 2)
-
+                       domain={'y': [0, 1], 'x': [0.35, 0.65]},
+                       marker=dict(colors=colors, line=dict(color='#000010', width=2))))
 figA4.add_trace(go.Pie(labels=labels, name="Comentários",
                        values=[GraphImage_comments, GraphSidecar_comments],
                        textinfo='none', showlegend=True,
-                       marker=dict(colors=colors,
-                                   line=dict(color='#000010', width=2))), 1, 3)
+                       domain={'y': [0, 1], 'x': [0.7, 1]},
+                       marker=dict(colors=colors, line=dict(color='#000010', width=2))))
 
-figA4.update_traces(hole=.4, hoverinfo="label+name+percent+value",
+figA4.update_traces(hole=.8, hoverinfo="label+name+percent+value",
                     hovertemplate="</br><b>Publicação:</b> %{label} " +
                                   "</br><b>Quantidade:</b>  %{value}" +
                                   "</br><b>Proporção:</b>  %{percent}")
 figA4.update_layout(autosize=True,
-                   height=270, margin=dict(l=20, r=20, b=20, t=30),
+                   height=270, margin=dict(l=10, r=10, b=2, t=40),
                    legend=dict(font_size=14, orientation="h", yanchor="top",
                                y=-0.05, xanchor="center", x=0.5),
                    paper_bgcolor="#F8F8FF", font={'size': 20})
+
+figA4.add_layout_image(dict(source=im1, xref="paper", yref="paper", x=0.095, y=0.65,
+                          sizex=0.3, sizey=0.3))
+figA4.add_layout_image(dict(source=im2, xref="paper", yref="paper", x=0.445, y=0.65,
+                          sizex=0.3, sizey=0.3))
+figA4.add_layout_image(dict(source=im3, xref="paper", yref="paper", x=0.75, y=0.65,
+                          sizex=0.3, sizey=0.3))
 
 
 ### GRAFICO 5 - BARRA -
@@ -253,7 +265,7 @@ figB1.add_trace(go.Bar(
 figB1.update_layout(
     paper_bgcolor="#F8F8FF", plot_bgcolor="#F8F8FF", font={'color': "#000000", 'family': "sans-serif"},
     legend=dict(font_size=11, orientation="h", yanchor="top", y=1.20, xanchor="center", x=0.5),
-    height=200, barmode='group', margin=dict(l=1, r=1, b=1, t=1), autosize=True, hovermode="x")
+    height=200, barmode='stack', margin=dict(l=1, r=1, b=1, t=1), autosize=True, hovermode="x")
 figB1.update_yaxes(
     title_text="Número de Interações",title_font=dict(family='Sans-serif', size=12),
     tickfont=dict(family='Sans-serif', size=9), nticks=7, showgrid=True, gridwidth=0.5, gridcolor='#D3D3D3')
@@ -373,13 +385,15 @@ plt.axis('off') # to off the axis of x and
 df_metricas = df_com.describe().reset_index()
 
 # Comentarios metricas:
-QUANTIDADE_C = df_metricas["likes_comentario"].iloc[0]
-MEDIA_C = df_metricas["likes_comentario"].iloc[1]
-MAXIMO_C = df_metricas["likes_comentario"].iloc[7]
+TOTAL_C = df_metricas["likes_comentario"].iloc[0]
+MEDIA_C = int(TOTAL_C /15)
+TOTAL_LIKES_C = df_com["likes_comentario"].sum()
+MEDIA_LIKES_C = df_metricas["likes_comentario"].iloc[1]
 # Respostas metricas:
-QUANTIDADE_R = df_metricas["likes_resposta"].iloc[0]
-MEDIA_R = df_metricas["likes_resposta"].iloc[1]
-MAXIMO_R = df_metricas["likes_resposta"].iloc[7]
+TOTAL_R = df_metricas["likes_resposta"].iloc[0]
+MEDIA_R = int(TOTAL_R /15)
+TOTAL_LIKES_R = df_com["likes_resposta"].sum()
+MEDIA_LIKES_R = df_metricas["likes_resposta"].iloc[1]
 #GRÁFICO 3:
 
 figD1 = go.Figure()
@@ -387,26 +401,31 @@ figD1.add_trace(go.Indicator(
     mode="number",
     number_font_size=30,
     number_font_color="#483D8B",
-    value=QUANTIDADE_C,
-    title={"text": "<span style='font-size:14px;color:black'>Quantidade:</span>"},
-    domain = {'y': [0, 1], 'x': [0.25, 0.5]}))
+    value=TOTAL_C,
+    title={"text": "<span style='font-size:14px;color:black'>Total:</span>"},
+    domain = {'y': [0, 1], 'x': [0, 0.25]}))
 figD1.add_trace(go.Indicator(
     mode="number",
     number_font_size=30,
     number_font_color="#483D8B",
     value=MEDIA_C,
+    title={"text": "<span style='font-size:14px;color:black'>Média:</span>"},
+    domain = {'y': [0, 1], 'x': [0.25, 0.5]}))
+figD1.add_trace(go.Indicator(
+    mode="number",
+    number_font_size=30,
+    number_font_color="#483D8B",
+    value=TOTAL_LIKES_C,
     title={"text": "<span style='font-size:14px;color:black'>Média de Likes:</span>"},
     domain = {'y': [0, 1], 'x': [0.5, 0.75]}))
 figD1.add_trace(go.Indicator(
     mode="number",
     number_font_size=30,
     number_font_color="#483D8B",
-    value=MAXIMO_C,
+    value=MEDIA_LIKES_C,
     title={"text": "<span style='font-size:14px;color:black'>Máx de Likes:</span>"},
     domain = {'y': [0, 1], 'x': [0.75, 1]}))
-figD1.update_layout(title="Comentários",title_font_color='black',title_font_size=20,
-                     title_x=0.03, title_xanchor='left',
-                     title_y=0.5, title_yanchor='middle',
+figD1.update_layout(
     paper_bgcolor="#F8F8FF", height=70, margin=dict(l=10, r=10, b=10, t=30),
     grid={'rows': 1, 'columns': 3})
 
@@ -418,26 +437,31 @@ figD2.add_trace(go.Indicator(
     mode="number",
     number_font_size=30,
     number_font_color="#483D8B",
-    value=QUANTIDADE_R,
-    title={"text": "<span style='font-size:14px;color:black'>Quantidade:</span>"},
-    domain = {'y': [0, 1], 'x': [0.25, 0.5]}))
+    value=TOTAL_R,
+    title={"text": "<span style='font-size:14px;color:black'>Total:</span>"},
+    domain = {'y': [0, 1], 'x': [0, 0.25]}))
 figD2.add_trace(go.Indicator(
     mode="number",
     number_font_size=30,
     number_font_color="#483D8B",
     value=MEDIA_R,
-    title={"text": "<span style='font-size:14px;color:black'>Média de Likes:</span>"},
+    title={"text": "<span style='font-size:14px;color:black'>Média:</span>"},
+    domain = {'y': [0, 1], 'x': [0.25, 0.5]}))
+figD2.add_trace(go.Indicator(
+    mode="number",
+    number_font_size=30,
+    number_font_color="#483D8B",
+    value=TOTAL_LIKES_R,
+    title={"text": "<span style='font-size:14px;color:black'>Total de Likes:</span>"},
     domain = {'y': [0, 1], 'x': [0.5, 0.75]}))
 figD2.add_trace(go.Indicator(
     mode="number",
     number_font_size=30,
     number_font_color="#483D8B",
-    value=MAXIMO_R,
-    title={"text": "<span style='font-size:14px;color:black'>Máx de Likes:</span>"},
+    value=MEDIA_LIKES_R,
+    title={"text": "<span style='font-size:14px;color:black'>Média de Likes:</span>"},
     domain = {'y': [0, 1], 'x': [0.75, 1]}))
-figD2.update_layout(title="Respostas",title_font_color='black',title_font_size=20,
-                     title_x=0.03, title_xanchor='left',
-                     title_y=0.5, title_yanchor='middle',
+figD2.update_layout(
     paper_bgcolor="#F8F8FF", height=70, margin=dict(l=10, r=10, b=10, t=30),
     grid={'rows': 1, 'columns': 3})
 
@@ -452,24 +476,26 @@ figD2.update_layout(title="Respostas",title_font_color='black',title_font_size=2
 df_status = df_com["status"].value_counts().reset_index()
 com_resposta = df_status["status"].iloc[1]
 sem_resposta = df_status["status"].iloc[0]
-
+im3 = Image.open("respostas.png")
 
 # Plotagem do Gráfico de Pizza
 figD3 = go.Figure(data=[go.Pie(labels=['Comentários com Resposta', "Comentários sem Resposta"],
                      values=[com_resposta, sem_resposta],
-                     textinfo=None, showlegend=True,
+                     textinfo='none', showlegend=True,
                      marker=dict(colors=['#8A2BE2', '#483D8B'],
                                  line=dict(color='#000010', width=2))
                             )])
-figD3.update_traces(hole=.6, hoverinfo="label+name+percent+value",
+figD3.update_traces(hole=.8, hoverinfo="label+name+percent+value",
                     hovertemplate="</br><b>Publicação:</b> %{label} " +
                                   "</br><b>Quantidade:</b>  %{value}" +
                                   "</br><b>Proporção:</b>  %{percent}")
-figD3.update_layout(height=250, margin=dict(l=10, r=10, b=30, t=30),
+figD3.update_layout(height=200, margin=dict(l=1, r=1, b=10, t=40),
                   legend=dict(font_size=14, orientation="h", yanchor="top",
-                               y=-0.05, xanchor="center", x=0.5),
+                               y=1.25, xanchor="center", x=0.5),
                   paper_bgcolor="#F8F8FF", font={'size': 16})
 
+figD3.add_layout_image(dict(source=im3, xref="paper", yref="paper", x=0.45, y=0.7,
+                          sizex=0.4, sizey=0.4))
 
 ################################################################################
 
