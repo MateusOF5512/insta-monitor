@@ -4,6 +4,8 @@ from PIL import Image
 
 path = "instagram1.csv"
 path_brasil = "instagram_tratado_vtrbrasil.csv"
+path_comentarios = "instagram_allcomments.csv"
+
 
 
 # - TOPO E RODAPÉ ------------------------------------------------------------------------
@@ -26,12 +28,12 @@ html_rodape="""
 
 # - PARTE 1 ------------------------------------------------------------------
 ## 1.1 - Número de Doses & Vacinas Aplicadas:
-html_header_01="""
+html_header_10="""
 <div class="card">
   <div class="card-body">
     <h2 class="card-title" style="color:#4169E1; font-family:sans-serif; 
                                   text-align: center; padding: 10px 0; font-size:200%;"
-                                  >Dash</h2>
+                                  >Monitoramento das Publicações</h2>
   </div>
 </div>
 """
@@ -189,3 +191,70 @@ html_card_header_CC="""
 
 
 
+#-------------------------------------------------------------------------------------------------------
+html_header_20="""
+<div class="card">
+  <div class="card-body">
+    <h2 class="card-title" style="color:#4169E1; font-family:sans-serif; 
+                                  text-align: center; padding: 10px 0; font-size:200%;"
+                                  >Monitoramento dos Comentários</h2>
+  </div>
+</div>
+"""
+
+
+html_card_header_2A1="""
+<div class="card">
+  <div class="card-body" style="border-radius: 15px 15px 0px 0px; background: #4169E1;  
+                                border:solid; border-color: black; border-width: 1px 1px 1px 1px;
+                                padding-top: 1px; padding-right: 20px; padding-bottom: 1px; padding-left: 20px; 
+                                width: 100%; height: 40px;">
+    <h5 class="card-title" style="background-color:#4169E1; color:#F5F5F5; font-family:sans-serif;
+                                  padding-top: 7px; padding-right: 15px; padding-bottom: 1px; padding-left: 15px; 
+                                  text-align: center;font-size: 120%;" 
+                                  >Comentários</h5>
+  </div>
+</div>
+"""
+
+html_card_header_2A2="""
+<div class="card">
+  <div class="card-body" style="border-radius: 15px 15px 0px 0px; background: #4169E1;  
+                                border:solid; border-color: black; border-width: 1px 1px 1px 1px;
+                                padding-top: 1px; padding-right: 20px; padding-bottom: 1px; padding-left: 20px; 
+                                width: 100%; height: 40px;">
+    <h5 class="card-title" style="background-color:#4169E1; color:#F5F5F5; font-family:sans-serif;
+                                  padding-top: 7px; padding-right: 15px; padding-bottom: 1px; padding-left: 15px; 
+                                  text-align: center;font-size: 120%;" 
+                                  >Respostas</h5>
+  </div>
+</div>
+"""
+
+html_card_header_2B1="""
+<div class="card">
+  <div class="card-body" style="border-radius: 15px 15px 0px 0px; background: #4169E1;  
+                                border:solid; border-color: black; border-width: 1px 1px 1px 1px;
+                                padding-top: 1px; padding-right: 20px; padding-bottom: 1px; padding-left: 20px; 
+                                width: 100%; height: 40px;">
+    <h5 class="card-title" style="background-color:#4169E1; color:#F5F5F5; font-family:sans-serif;
+                                  padding-top: 7px; padding-right: 15px; padding-bottom: 1px; padding-left: 15px; 
+                                  text-align: center;font-size: 120%;" 
+                                  >Comentários mais Frequêntes</h5>
+  </div>
+</div>
+"""
+
+html_card_header_2B2="""
+<div class="card">
+  <div class="card-body" style="border-radius: 15px 15px 0px 0px; background: #4169E1;  
+                                border:solid; border-color: black; border-width: 1px 1px 1px 1px;
+                                padding-top: 1px; padding-right: 20px; padding-bottom: 1px; padding-left: 20px; 
+                                width: 100%; height: 40px;">
+    <h5 class="card-title" style="background-color:#4169E1; color:#F5F5F5; font-family:sans-serif;
+                                  padding-top: 7px; padding-right: 15px; padding-bottom: 1px; padding-left: 15px; 
+                                  text-align: center;font-size: 120%;" 
+                                  >Respostas mais Frequêntes</h5>
+  </div>
+</div>
+"""
